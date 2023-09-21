@@ -1,6 +1,6 @@
 import 'package:bloc1/pages/home/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import './bloc/export.dart';
 
 class App extends StatelessWidget {
   /// {@macro app}
@@ -8,7 +8,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [], child: AppView());
+    return AppView();
+    // return MultiBlocProvider(providers: [
+    //   // BlocProvider(create : (context) => )
+    // ], child: AppView());
   }
 }
 
