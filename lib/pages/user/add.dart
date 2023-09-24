@@ -18,6 +18,7 @@ class AddPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          SizedBox(height: 20),
           TextField(
             controller: nameC,
             decoration: InputDecoration(
@@ -25,6 +26,7 @@ class AddPage extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
+          SizedBox(height: 20),
           TextField(
             keyboardType: TextInputType.number,
             controller: ageC,

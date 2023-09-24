@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditPage(),
+                      builder: (context) => EditPage(user),
                     ),
                   );
                 },
@@ -41,7 +41,9 @@ class HomePage extends StatelessWidget {
                 title: Text(user.name),
                 subtitle: Text("${user.age} tahun"),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    userB.add(DeleteUserEvent(user));
+                  },
                   icon: Icon(Icons.delete),
                 ),
               );
