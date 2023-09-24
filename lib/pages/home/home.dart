@@ -1,66 +1,56 @@
-import 'package:bloc1/bloc/export.dart';
-
-import '../user/edit.dart';
 import 'package:flutter/material.dart';
-import '../user/add.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    UserBloc userB = context.read<UserBloc>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("ALL USERS"),
+        title: Text("RANDOM APPS"),
       ),
-      body: BlocBuilder<UserBloc, UserState>(
-        bloc: userB,
-        builder: (context, state) {
-          if (state.allUsers.isEmpty) {
-            return Center(
-              child: Text("Data Empty"),
-            );
-          }
-          return ListView.builder(
-            itemCount: state.allUsers.length,
-            itemBuilder: (context, index) {
-              User user = state.allUsers[index];
-              return ListTile(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EditPage(user),
-                    ),
-                  );
-                },
-                leading: CircleAvatar(
-                  child: Text("${index + 1}"),
-                ),
-                title: Text(user.name),
-                subtitle: Text("${user.age} tahun"),
-                trailing: IconButton(
-                  onPressed: () {
-                    userB.add(DeleteUserEvent(user));
-                  },
-                  icon: Icon(Icons.delete),
-                ),
-              );
-            },
-          );
-        },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 75,
+              height: 75,
+              child: Container(
+                color: Colors.grey.shade300,
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Joni Sumanto",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text("joni.sumanto@gmail.com"),
+            SizedBox(height: 20),
+            Text("============== MASAKAN =============="),
+            SizedBox(height: 20),
+            Text("Mie Ayam Enak Banget"),
+            SizedBox(height: 5),
+            Text("5 porsi"),
+            SizedBox(height: 5),
+            Text("Tingkat kesulitan ( Rumit )"),
+            SizedBox(height: 20),
+            SizedBox(
+              width: 200,
+              height: 150,
+              child: Container(
+                color: Colors.grey.shade300,
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddPage(),
-            ),
-          );
-        },
-        child: Icon(Icons.add),
+        onPressed: () {},
+        child: Icon(Icons.refresh),
       ),
     );
   }

@@ -1,16 +1,19 @@
-import 'package:bloc1/pages/home/home.dart';
 import 'package:flutter/material.dart';
+
 import './bloc/export.dart';
+import './pages/home/home.dart';
 
 class App extends StatelessWidget {
-  /// {@macro app}
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => UserBloc()),
-    ], child: AppView());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => RandomBloc()),
+      ],
+      child: AppView(),
+    );
   }
 }
 
