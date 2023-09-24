@@ -1,36 +1,64 @@
+import 'package:bloc1/bloc/export.dart';
+
 import '../user/edit.dart';
 import 'package:flutter/material.dart';
 import '../user/add.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserBloc userB = context.read<UserBloc>();
     return Scaffold(
-      appBar: AppBar(title: Text("All User")),
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return ListTile(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => EditPage()));
-              },
-              leading: CircleAvatar(
-                child: Text(("${index + 1}")),
-              ),
-              title: Text("Nama User"),
-              subtitle: Text("Umur User"),
-              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+      appBar: AppBar(
+        title: Text("ALL USERS"),
+      ),
+      body: BlocBuilder<UserBloc, UserState>(
+        bloc: userB,
+        builder: (context, state) {
+          if (state.allUsers.isEmpty) {
+            return Center(
+              child: Text("Data Empty"),
             );
-          }),
+          }
+          return ListView.builder(
+            itemCount: state.allUsers.length,
+            itemBuilder: (context, index) {
+              User user = state.allUsers[index];
+              return ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditPage(),
+                    ),
+                  );
+                },
+                leading: CircleAvatar(
+                  child: Text("${index + 1}"),
+                ),
+                title: Text(user.name),
+                subtitle: Text("${user.age} tahun"),
+                trailing: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete),
+                ),
+              );
+            },
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPage()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddPage(),
+            ),
+          );
         },
+        child: Icon(Icons.add),
       ),
     );
   }

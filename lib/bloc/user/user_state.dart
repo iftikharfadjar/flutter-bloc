@@ -1,14 +1,26 @@
 part of 'user_bloc.dart';
 
 abstract class UserState extends Equatable {
-  UserState(this.allUser);
+  UserState(this.allUsers);
 
-  List<User> allUser;
+  List<User> allUsers;
 
   @override
-  List<Object> get props => [allUser];
+  List<Object> get props => [allUsers];
 }
 
-class UserIntial extends UserState {
-  UserIntial(super.allUser);
+class UserInitial extends UserState {
+  UserInitial(super.allUsers);
+}
+
+class UserLoading extends UserState {
+  UserLoading(super.allUsers);
+}
+
+class UserFinish extends UserState {
+  UserFinish(super.allUsers);
+}
+
+class UserError extends UserState {
+  UserError(super.allUsers);
 }

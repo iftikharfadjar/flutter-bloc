@@ -8,10 +8,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppView();
-    // return MultiBlocProvider(providers: [
-    //   // BlocProvider(create : (context) => )
-    // ], child: AppView());
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => UserBloc()),
+    ], child: AppView());
   }
 }
 

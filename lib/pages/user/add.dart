@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../../bloc/export.dart';
 
@@ -24,6 +26,7 @@ class AddPage extends StatelessWidget {
             ),
           ),
           TextField(
+            keyboardType: TextInputType.number,
             controller: ageC,
             decoration: InputDecoration(
               labelText: "Age",
@@ -32,7 +35,11 @@ class AddPage extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                userB.add(AddUserEvent());
+                userB.add(AddUserEvent(User(
+                    id: Random().nextInt(99999),
+                    name: nameC.text,
+                    age: int.parse(ageC.text))));
+                Navigator.pop(context);
               },
               child: Text("Add User"))
         ],

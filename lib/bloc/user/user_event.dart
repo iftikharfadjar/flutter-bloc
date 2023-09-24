@@ -1,15 +1,13 @@
 part of 'user_bloc.dart';
 
 abstract class UserEvent extends Equatable {
-  const UserEvent()
+  const UserEvent();
 
   @override
-  List<Object> get props => []
+  List<Object> get props => [];
 }
 
 class AddUserEvent extends UserEvent {
-  AddUserEvent();
-
+  AddUserEvent(this.user);
   final User user;
-
 }
