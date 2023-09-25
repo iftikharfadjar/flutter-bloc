@@ -20,7 +20,13 @@ class HomePage extends StatelessWidget {
                   return CircularProgressIndicator();
                 }
                 if (state is RandomError) {
-                  return Text("Terjadi Kesalahan");
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Terjadi Kesalahan"),
+                      Text("${state.error}"),
+                    ],
+                  );
                 }
                 if (state is RandomInitial) {
                   return Text("Tidak ada data");

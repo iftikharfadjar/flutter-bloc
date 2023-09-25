@@ -15,11 +15,19 @@ class RandomRepository {
     Map<String, dynamic> dataUser = await userProvider.getDataUser();
     Map<String, dynamic> dataMasakan = await masakanProvider.getDataMasakan();
 
-    if (dataUser["error"] == true && dataMasakan["error"] == true) {
-      return {
-        "error": true,
-        "message": "Terjadi erro saat mengambil database user & masakan",
-      };
+    // if (dataUser["error"] == true && dataMasakan["error"] == true) {
+    //   return {
+    //     "error": true,
+    //     "message": "Terjadi erro saat mengambil database user & masakan",
+    //   };
+    // }
+    //
+    if (dataUser["error"] == true) {
+      return dataUser;
+    }
+
+    if (dataMasakan["error"] == true) {
+      return dataMasakan;
     }
 
     // GET RANDOM USER

@@ -5,7 +5,7 @@ import 'dart:convert';
 class UserProvider {
   Future<Map<String, dynamic>> getDataUser() async {
     try {
-      Uri url = Uri.parse("https://reqres.in/api/users");
+      Uri url = Uri.parse("https://ttreqres.in/api/users");
       var response = await http.get(url);
 
       if (response.statusCode != 200) {
